@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipe App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .recipe-card {
+      border: 1px solid #ccc;
+      padding: 15px;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+    }
+    .recipe-card img {
+      max-width: 100%;
+      
+      border-radius: 5px;
+    }
+   
+    .search {
+      margin-bottom: 20px;
+    }
+    button {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Recipe App</h1>
+
+  <div class="search">
+    <input type="text" id="searchInput" placeholder="Search by title">
+    <button id="search">Search</button>
+  </div>
+
+  <button id="sortButton">Sort by Number of Ingredients</button>
+
+  <div id="recipeGrid" class="container"></div>
+
+  <script src="index.js"></script>
+</body>
+</html>
