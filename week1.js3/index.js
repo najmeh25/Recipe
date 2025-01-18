@@ -1,52 +1,43 @@
-
 async function fetchData() {
     try {
         const response = await fetch("https://raw.githubusercontent.com/najmeh25/najmeh25.github.io/refs/heads/main/index.json");
-        allData = await response.json();  
-        console.log(allData);  
-        displayData(allData);  
-    } catch (error) {
-        console.error("Error fetching data:", error);
+        return await response.json();
+    } catch {
+        console.error("Failed to fetch data.");
+        return [];
     }
 }
 
-
-function searchIngredient() {
-    const searchTerm = document.getElementById("search").value.trim().toLowerCase();  
-    
-    console.log("Searching for: ", searchTerm);  
-    
-   
-    if (allData.length > 0) {
-        const filteredData = allData.filter(item => 
-            item.ingredients.some(ingredient => ingredient.toLowerCase().includes(searchTerm)) ||
-            item.name.toLowerCase().includes(searchTerm)  
-        );
-        
-        console.log("Filtered Data: ", filteredData);  
-        
-        displayData(filteredData);
-    }
-}
-
-
+// Display data in the list
 function displayData(data) {
     const dataList = document.getElementById("data-list");
-    dataList.innerHTML = ""; 
-    if (data.length === 0) {
-        dataList.innerHTML = "<li>No results found.</li>";
-    } else {
-        data.forEach(item => {
-            const listItem = document.createElement("li");
-            listItem.innerHTML = `
-                <strong>${item.name}</strong> - ${item.type} - $${item.price}<br>
-                Ingredients: ${item.ingredients.join(", ")}
-            `;
-            dataList.appendChild(listItem);
-        });
-    }
+    dataList.innerHTML = data.length
+        ? data.map(item => `
+            <li>
+                <strong>${item.name}</strong> (${item.type}) - $${item.price.toFixed(2)}
+                <br>Ingredients: ${item.ingredients.join(", ")}
+                <br>Available: ${item.available ? "Yes" : "No"}
+            </li>
+        `).join("")
+        : "<li>No results found.</li>";
 }
 
+// Filter data based on search term
+function filterData(data, searchTerm) {
+    return data.filter(item =>
+        item.name.toLowerCase().includes(searchTerm) ||
+        item.ingredients.some(ing => ing.toLowerCase().includes(searchTerm))
+    );
+}
 
-document.getElementById("search-btn").addEventListener("click", searchIngredient);
-fetchData();
+// Main function
+async function main() {
+    const data = await fetchData();
+    document.getElementById("search-input").addEventListener("input", e => {
+        const filtered = filterData(data, e.target.value.toLowerCase());
+        displayData(filtered);
+    });
+    displayData(data);
+}
+
+main();
