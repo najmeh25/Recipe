@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipe Manager</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <h1>Recipe Manager</h1>
+
+  <!-- Search and Sort -->
+  <div id="searchAndSort">
+    <input type="text" id="searchInput" placeholder="Search Recipes...">
+    <button id="search1">Search and sort</button>
+    <button id="sortButton">Sort by Ingredients</button>
+  </div>
+
+  <!-- Add Recipe Form -->
+  <form id="addRecipeForm">
+    <h2>Add a New Recipe</h2>
+    <label id="ti">Title: <input type="text" id="recipeTitle" required></label><br>
+    <label>Picture URL: <input type="text" id="recipePicture" required></label><br>
+    <label>Description: <input type="text" id="recipeDescription" required></label><br>
+    <div id="ingredientsList"></div>
+    <button type="button" id="addIngredientButton">Add Ingredient</button><br>
+    <button type="submit">Add Recipe</button>
+  </form>
+
+  <!-- Recipes Grid -->
+  <div id="recipeGrid"></div>
+
+  <!-- Timer -->
+  <div class="Timer">
+    <h1>Cooking Timer</h1>
+    <input type="number" id="cookingTime" placeholder="Enter time in seconds">
+    <button id="startTimerButton">Start Cooking Timer</button>
+    <p id="cookingMessage"></p>
+  
+    <h2>Time Spent on Page</h2>
+    <p id="pageTimer">0 seconds</p>
+  </div>
+
+  <!-- External Data -->
+  <div id="external">
+    <h2>Search External Recipes</h2>
+    <input type="text" id="search" placeholder="Search for an ingredient..." />
+    <button id="search-btn">Search</button>
+    <ul id="data-list"></ul>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>
