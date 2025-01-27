@@ -1,0 +1,18 @@
+{
+    "recipes": [
+      {
+        "id": 1,
+        "title": "Gløgg",
+        "picture_url": "https://upload.wikimedia.org/wikipedia/commons/e/e2/Gl%C3%B6gg_kastrull.JPG",
+        "description": "A warm Scandinavian drink for winter.",
+        "ingredients": ["Orange zest", "Water", "Sugar", "Cinnamon sticks", "Red wine"]
+      },
+      {
+        "id": 2,
+        "title": "Pancakes",
+        "picture_url": "https://upload.wikimedia.org/wikipedia/commons/6/6b/Pancakes_with_syrup.jpg",
+        "description": "Fluffy pancakes for a perfect breakfast.",
+        "ingredients": ["Flour", "Milk", "Eggs", "Sugar", "Butter"]
+      }
+    ]
+  }
