@@ -1,43 +1,63 @@
-async function fetchData() {
-    try {
-        const response = await fetch("https://raw.githubusercontent.com/najmeh25/najmeh25.github.io/refs/heads/main/index.json");
-        return await response.json();
-    } catch {
-        console.error("Failed to fetch data.");
-        return [];
+
+
+function fetchData() {
+    return fetch("https://raw.githubusercontent.com/najmeh25/najmeh25.github.io/refs/heads/main/index.json")
+        .then(response => response.json())
+        .then(data => {
+            allData = data;
+            console.log(allData);
+            displayData(allData);
+        })
+        .catch(error => {
+            console.error("Error fetching data:", error);
+        });
+}
+
+function searchIngredient() {
+    const searchTerm = document.getElementById("search").value.trim().toLowerCase();  
+    console.log("Searching for: ", searchTerm);  
+    
+    if (allData.length > 0) {
+        const filteredData = allData.filter(item => 
+            item.ingredients.some(ingredient => ingredient.toLowerCase().includes(searchTerm)) ||
+            item.name.toLowerCase().includes(searchTerm)  
+        );
+        
+        console.log("Filtered Data: ", filteredData);  
+        
+        displayData(filteredData);
     }
 }
 
-// Display data in the list
 function displayData(data) {
     const dataList = document.getElementById("data-list");
-    dataList.innerHTML = data.length
-        ? data.map(item => `
-            <li>
-                <strong>${item.name}</strong> (${item.type}) - $${item.price.toFixed(2)}
-                <br>Ingredients: ${item.ingredients.join(", ")}
-                <br>Available: ${item.available ? "Yes" : "No"}
-            </li>
-        `).join("")
-        : "<li>No results found.</li>";
+    dataList.innerHTML = ""; 
+    if (data.length === 0) {
+        const listItem = document.createElement("li");
+        listItem.textContent = "No results found.";
+        dataList.appendChild(listItem);
+    } else {
+        data.forEach(item => {
+            const listItem = document.createElement("li");
+            const strong = document.createElement("strong");
+            strong.textContent = item.name;
+            
+            const textNode = document.createTextNode(` - ${item.type} - $${item.price}`);
+            
+            const ingredients = document.createElement("p");
+            ingredients.textContent = `Ingredients: ${item.ingredients.join(", ")}`;
+            
+            listItem.appendChild(strong);
+            listItem.appendChild(textNode);
+            listItem.appendChild(document.createElement("br"));
+            listItem.appendChild(ingredients);
+            
+            dataList.appendChild(listItem);
+        });
+    }
 }
 
-// Filter data based on search term
-function filterData(data, searchTerm) {
-    return data.filter(item =>
-        item.name.toLowerCase().includes(searchTerm) ||
-        item.ingredients.some(ing => ing.toLowerCase().includes(searchTerm))
-    );
-}
-
-// Main function
-async function main() {
-    const data = await fetchData();
-    document.getElementById("search-input").addEventListener("input", e => {
-        const filtered = filterData(data, e.target.value.toLowerCase());
-        displayData(filtered);
-    });
-    displayData(data);
-}
-
-main();
+document.getElementById("search-btn").addEventListener("click", searchIngredient);
+fetchData().then(() => {
+    console.log("Data fetched successfully.");
+});
