@@ -1,0 +1,133 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 20px;
+    line-height: 1.6;
+    background-color: #c8e4c9;
+  }
+  
+  h1 {
+    color: #4CAF50;
+    text-align: center;
+  }
+  
+  .recipe-card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #f9f9f9;
+  }
+  
+  .recipe-card img {
+    max-width: 200px;
+    height: auto;
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  input, button {
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  button {
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  #data-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  #data-list li {
+    margin: 5px 0;
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
+  }
+  #recipeGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  .Timer{
+    padding-top: 30px;
+    margin: 0 auto;
+    
+    justify-content: center;
+   display: flex;
+   flex-direction: column;
+   text-align: center;
+   padding-left: 450px;
+   padding-right: 450px;
+  }
+  #external {
+    padding-top: 30px;
+    margin: 0 auto;
+    
+    justify-content: center;
+   display: flex;
+   flex-direction: column;
+   text-align: center;
+   padding-left: 250px;
+   padding-right: 250px;
+   
+  }
+  #addRecipeForm{
+    padding-top: 30px;
+    margin: 0 auto;
+    
+    justify-content: center;
+   display: flex;
+   flex-direction: column;
+   text-align: center;
+   padding-left: 250px;
+   padding-right: 300px;
+  }
+  #ti{
+    padding-left: 58px;
+  }
+  
+  #searchAndSort{
+    padding-top: 30px;
+    margin: 0 auto;
+    
+    justify-content: center;
+   display: flex;
+   flex-direction: column;
+   text-align: center;
+   padding-left: 450px;
+   padding-right: 450px;
+  }
+  h1 {
+    text-align: center;
+}
+
+#search-btn {
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+#data-list {
+    list-style-type: none;
+    padding: 0;
+}
+#data-list li {
+    background: #fff;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
