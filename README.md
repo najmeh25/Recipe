@@ -13,7 +13,7 @@
 
 ## 🌐 Live Demo
 
-[Click here to view the live demo](https://recipe-phi-silk.vercel.app/)
+[Click here to view the live demo](https://recipe-mve3.vercel.app/)
 
 ---
 
